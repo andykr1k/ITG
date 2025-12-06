@@ -16,10 +16,10 @@ def root():
 
 @app.get("/env")
 def download_env():
-    """Return the shared.env file."""
+    """Return the .env file."""
     if not os.path.exists(ENV_PATH):
         raise HTTPException(status_code=404, detail="No env file found.")
-    return FileResponse(ENV_PATH, filename="shared.env")
+    return FileResponse(ENV_PATH, filename=".env")
 
 @app.post("/env")
 async def upload_env(
