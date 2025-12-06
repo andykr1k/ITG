@@ -25,7 +25,8 @@ def root():
     return {"status": "ok", "message": "ENV Storage API running"}
 
 @app.get("/env")
-def download_env():
+def download_env(    token: str = Header(None)
+):
     """Return the .env file."""
     if not os.path.exists(ENV_PATH):
         raise HTTPException(status_code=404, detail="No env file found.")
