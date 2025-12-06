@@ -12,4 +12,4 @@ echo "Building new image..."
 sudo docker build -t filestorage .
 
 echo "Starting container..."
-sudo docker run -d -p 18000:8000 --name filestorage filestorage
+sudo docker run -d -p 18888:8888 --name filestorage filestorage
