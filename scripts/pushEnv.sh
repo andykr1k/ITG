@@ -1,22 +1,22 @@
 #!/bin/bash
 set -e
 
-if [ -f .env.local ]; then
-    export $(grep -v '^#' .env.local | xargs)
+if [ -f .env ]; then
+    export $(grep -v '^#' .env | xargs)
 else
-    echo "❌ .env.local not found. Create it with:"
-    echo "API_URL=https://your-service.onrender.com"
+    echo "❌ .env not found. Create it with:"
+    echo "FILESTORAGE_API_URL=https://your-service.onrender.com"
     echo "UPLOAD_TOKEN=yourtoken"
     exit 1
 fi
 
 if [ -z "$UPLOAD_TOKEN" ]; then
-    echo "❌ UPLOAD_TOKEN is not set in .env.local"
+    echo "❌ UPLOAD_TOKEN is not set in .env"
     exit 1
 fi
 
-if [ -z "$API_URL" ]; then
-    echo "❌ API_URL is not set in .env.local"
+if [ -z "$FILESTORAGE_API_URL" ]; then
+    echo "❌ FILESTORAGE_API_URL is not set in .env"
     exit 1
 fi
 
@@ -25,11 +25,11 @@ if [ ! -f .env ]; then
     exit 1
 fi
 
-echo "⬆️  Uploading .env to $API_URL ..."
+echo "⬆️  Uploading .env to $FILESTORAGE_API_URL ..."
 
 response=$(curl -s -o >(cat) \
     -w "%{http_code}" \
-    -X POST "$API_URL/env" \
+    -X POST "$FILESTORAGE_API_URL/env" \
     -H "token: $UPLOAD_TOKEN" \
     -F "file=@.env")
 
