@@ -9,7 +9,7 @@ PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
 # Download .env to temp file
 TEMP_ENV=$(mktemp)
 curl -s -H "token: $UPLOAD_TOKEN" -o "$TEMP_ENV" \
-    "$FILESTORAGE_API_URL/env"
+    "$AWS_URL:$FILESTORAGE_API_URL_PORT/env"
 
 # Copy to all target directories
 TARGETS=(
