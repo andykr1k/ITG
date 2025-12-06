@@ -5,8 +5,8 @@ echo "Pulling latest changes..."
 git pull
 
 echo "Stopping existing container..."
-docker stop server || true
-docker rm server || true
+sudo docker stop server || true
+sudo docker rm server || true
 
 echo "Building new image..."
 sudo docker build -t server .

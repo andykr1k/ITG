@@ -5,8 +5,8 @@ echo "Pulling latest changes..."
 git pull
 
 echo "Stopping existing container..."
-docker stop filestorage || true
-docker rm filestorage || true
+sudo docker stop filestorage || true
+sudo docker rm filestorage || true
 
 echo "Building new image..."
 sudo docker build -t filestorage .
