@@ -1,6 +1,8 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException, Header
 from fastapi.responses import FileResponse
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 app = FastAPI(title="Shared ENV Storage API")
 SECRET_TOKEN = os.getenv("UPLOAD_TOKEN", "changeme")
