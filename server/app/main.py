@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Header
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from openai import OpenAI
@@ -17,6 +17,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+SECRET_TOKEN = os.getenv("UPLOAD_TOKEN", "changeme")
+
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 class ChatRequest(BaseModel):
@@ -30,7 +32,9 @@ def root():
     return {"status": "ok", "message": "ITG Chat API running"}
 
 @app.post("/chat", response_model=ChatResponse)
-def chat(request: ChatRequest):
+def chat(request: ChatRequest, token: str = Header(...)):
+    if token != SECRET_TOKEN:
+        raise HTTPException(403, "Invalid token")
     """Send a message to ChatGPT and get a response."""
     try:
         response = client.chat.completions.create(

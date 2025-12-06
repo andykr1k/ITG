@@ -25,8 +25,11 @@ def root():
     return {"status": "ok", "message": "ENV Storage API running"}
 
 @app.get("/env")
-def download_env(    token: str = Header(None)
+def download_env(    
+    token: str = Header(...),
 ):
+    if token != SECRET_TOKEN:
+        raise HTTPException(403, "Invalid token")
     """Return the .env file."""
     if not os.path.exists(ENV_PATH):
         raise HTTPException(status_code=404, detail="No env file found.")
