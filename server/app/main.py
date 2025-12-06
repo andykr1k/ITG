@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from openai import OpenAI
 from dotenv import load_dotenv
@@ -7,6 +8,14 @@ import os
 load_dotenv()
 
 app = FastAPI(title="ITG Chat API")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 

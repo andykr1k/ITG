@@ -1,10 +1,19 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException, Header
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 import os
 from dotenv import load_dotenv
 load_dotenv()
 
 app = FastAPI(title="Shared ENV Storage API")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 SECRET_TOKEN = os.getenv("UPLOAD_TOKEN", "changeme")
 ENV_PATH = "./app/storage/.env"
 
