@@ -13,4 +13,4 @@ sudo docker build -t server .
 
 echo "Starting container..."
 sudo docker run -d -p 18000:8000 server
-docker run -d -p 8000:8000 --name server server
+sudo docker run -d -p 8000:8000 --name server server

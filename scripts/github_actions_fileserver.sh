@@ -13,4 +13,4 @@ sudo docker build -t filestorage .
 
 echo "Starting container..."
 sudo docker run -d -p 18000:8000 filestorage
-docker run -d -p 8000:8000 --name filestorage filestorage
+sudo docker run -d -p 8000:8000 --name filestorage filestorage
