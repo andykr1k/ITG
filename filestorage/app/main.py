@@ -1,8 +1,9 @@
-from fastapi import FastAPI, UploadFile, File, HTTPException, Header
+from fastapi import FastAPI, UploadFile, File, HTTPException, Header, status
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, JSONResponse
 import os
 from dotenv import load_dotenv
+
 load_dotenv()
 
 app = FastAPI(title="Shared ENV Storage API")
@@ -45,4 +46,7 @@ async def upload_env(
     with open(ENV_PATH, "wb") as f:
         f.write(content)
 
-    return {"status": "success", "size": len(content)}
+    return JSONResponse(
+        status_code=status.HTTP_200_OK,
+        content={"status": "success", "size": len(content)}
+    )
