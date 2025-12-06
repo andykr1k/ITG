@@ -17,7 +17,8 @@ TARGETS=(
     "mobile"
     "server"
     "scripts"
-    "web"
+    "web",
+    "filestorage"
 )
 
 for dir in "${TARGETS[@]}"; do
