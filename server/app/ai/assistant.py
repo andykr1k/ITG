@@ -88,6 +88,15 @@ class ITGAssistant:
         messages.extend(self.chat_history)
         messages.append({"role": "user", "content": user_prompt})
         
+        # Example messages structure:
+        # [
+        #     {"role": "system", "content": "<system_prompt>\n\nUser Background:\n<user_background>"},
+        #     {"role": "user", "content": "<previous_user_message>"},        # from chat_history
+        #     {"role": "assistant", "content": "<previous_assistant_response>"},  # from chat_history
+        #     ...  # more history pairs
+        #     {"role": "user", "content": "<current_user_prompt>"}
+        # ]
+        
         response = self.model.chat.completions.create(
             model="gpt-4o",
             messages=messages,
