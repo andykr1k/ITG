@@ -21,6 +21,6 @@ jobs:
             set -e
             cd /home/prod/ITG
             git pull
-            cd server
+            cd script
             bash ./pull_env.sh
             bash ./github_actions_server.sh
