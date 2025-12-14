@@ -23,5 +23,4 @@ jobs:
             git pull
             cd scripts
             ./pull_env.sh
-            ./github_actions_fileserver.sh
             ./github_actions_server.sh
