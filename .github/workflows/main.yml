@@ -19,5 +19,8 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             set -e
-            cd /home/prod/ITG/scripts
+            cd /home/prod/ITG
+            git pull
+            cd server
+            bash ./pull_env.sh
             bash ./github_actions_server.sh
