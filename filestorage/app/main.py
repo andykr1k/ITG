@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 import os
 from dotenv import load_dotenv
+from pydantic import BaseModel
 
 load_dotenv()
 
@@ -19,6 +20,10 @@ SECRET_TOKEN = os.getenv("UPLOAD_TOKEN", "changeme")
 ENV_PATH = "./app/storage/.env"
 
 os.makedirs(os.path.dirname(ENV_PATH), exist_ok=True)
+
+class HealthResponse(BaseModel):
+    status: str
+
 
 @app.get("/")
 def root():
@@ -54,3 +59,7 @@ async def upload_env(
         status_code=status.HTTP_200_OK,
         content={"status": "success", "size": len(content)}
     )
+
+@app.get("/health", response_model=HealthResponse)
+def health_check():
+    return {"status": "active"}

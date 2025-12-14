@@ -32,6 +32,8 @@ class ChatRequest(BaseModel):
 class ChatResponse(BaseModel):
     reply: str
 
+class HealthResponse(BaseModel):
+    status: str
 
 class StepRequest(BaseModel):
     goal: str
@@ -79,3 +81,7 @@ def get_steps(request: StepRequest, token: str = Header(...)):
         return StepsResponse(goal=request.goal, steps=steps)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/health", response_model=HealthResponse)
+def health_check():
+    return {"status": "active"}
