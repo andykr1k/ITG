@@ -19,5 +19,5 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             set -e
-            cd ~/server/scripts
+            cd /home/prod/ITG/scripts
             bash ./github_actions_server.sh
