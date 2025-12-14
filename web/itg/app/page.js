@@ -44,6 +44,12 @@ export default function Home() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <main className="flex min-h-screen w-full max-w-3xl flex-col justify-center bg-white py-32 px-16 dark:bg-black">
+        <div
+    className="pointer-events-none absolute inset-0 
+               bg-[radial-gradient(circle,rgba(0,0,0,0.06)_1px,transparent_1px)]
+               [background-size:24px_24px]
+               dark:bg-[radial-gradient(circle,rgba(255,255,255,0.1)_0.5px,transparent_1px)]"
+  />
         <div className="flex flex-col gap-6 text-center sm:text-left">
           <h1 className="text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
             Intelligent Guidance
