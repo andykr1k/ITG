@@ -6,6 +6,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY .env .env
+COPY .env app/storage/.env
 COPY app ./app
 
 EXPOSE 8888

@@ -22,6 +22,6 @@ jobs:
             cd /home/prod/ITG
             git pull
             cd scripts
-            ./pull_env.sh
             ./github_actions_fileserver.sh
+            ./pull_env.sh
             ./github_actions_server.sh
