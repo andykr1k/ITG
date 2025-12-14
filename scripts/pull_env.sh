@@ -17,7 +17,7 @@ TARGETS=(
     "mobile/itg"
     "server"
     "scripts"
-    "web"
+    "web/itg"
     "filestorage"
 )
 
