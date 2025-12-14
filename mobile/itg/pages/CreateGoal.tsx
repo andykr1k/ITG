@@ -36,14 +36,14 @@ export default function CreateGoal() {
         
         if (result.success) {
           console.log('Goal sent successfully:', result.data);
-          setMessages(prev => [
-            ...prev,
-            { 
-              id: Date.now(), 
-              text: result.data?.steps, 
-              isUser: false 
-            }
-          ]);
+
+          const stepMessages = result.data?.steps.map(step => ({
+            id: Date.now() + step.step_number, // ensure unique ids
+            text: `**Step ${step.step_number}: ${step.title}**\n\n${step.description}`,
+            isUser: false,
+          })) ?? [];
+
+          setMessages(prev => [...prev, ...stepMessages]);
         } else {
           console.error('Failed to send goal:', result.message);
           setMessages(prev => [

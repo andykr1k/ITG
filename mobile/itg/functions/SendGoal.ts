@@ -1,4 +1,4 @@
-import { SEND_GOAL_API_URL } from '@env';
+import { SEND_GOAL_API_URL, UPLOAD_TOKEN } from '@env';
 
 interface SendGoalResponse {
   success: boolean;
@@ -12,6 +12,7 @@ export async function sendGoal(goal: string): Promise<SendGoalResponse> {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'token': UPLOAD_TOKEN,
       },
       body: JSON.stringify({ goal }),
     });
