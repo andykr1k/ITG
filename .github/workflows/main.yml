@@ -1,4 +1,4 @@
-name: Deploy to AWS
+name: Deploy Server Code to AWS
 
 on:
   push:
