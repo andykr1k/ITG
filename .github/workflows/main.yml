@@ -1,4 +1,4 @@
-name: Deploy Server Code to AWS
+name: Deploy Server and File Storage Code to AWS
 
 on:
   push:
@@ -23,4 +23,5 @@ jobs:
             git pull
             cd scripts
             bash ./pull_env.sh
+            bash ./github_actions_fileserver.sh
             bash ./github_actions_server.sh

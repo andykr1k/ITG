@@ -1,9 +1,6 @@
 #!/bin/bash
 cd ../filestorage
 
-echo "Pulling latest changes..."
-git pull
-
 echo "Stopping existing container..."
 docker stop filestorage || true
 docker rm filestorage || true
