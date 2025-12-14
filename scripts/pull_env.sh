@@ -14,7 +14,7 @@ curl -s -H "token: $UPLOAD_TOKEN" -o "$TEMP_ENV" \
 # Copy to all target directories
 TARGETS=(
     "database"
-    "mobile"
+    "mobile/itg"
     "server"
     "scripts"
     "web",
