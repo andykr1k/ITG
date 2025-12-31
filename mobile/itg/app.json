@@ -3,36 +3,44 @@
     "name": "itg",
     "slug": "itg",
     "version": "1.0.0",
-
     "web": {
       "favicon": "./assets/favicon.png"
     },
-
     "experiments": {
       "tsconfigPaths": true
     },
-
     "plugins": [],
-
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-
     "userInterfaceStyle": "light",
-
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "deploymentTarget": "16.0",
+      "bundleIdentifier": "com.andykrik.itg",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
+      },
+      "package": "com.andykrik.itg"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "e4bb370c-c9f4-42f3-939c-e4ff12886a53"
       }
-    }
+    },
+    "owner": "andykrik"
   }
 }

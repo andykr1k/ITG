@@ -10,14 +10,20 @@ npm-debug.*
 *.orig.*
 web-build/
 
+# Root iOS and Android build folders (but keep modules/intents/ios and modules/intents/android)
+/ios/
+/android/
 
 package-lock.json
 
-ios
-android
 
 # macOS
 .DS_Store
 
 # Temporary files created by Metro to check the health of the file watcher
 .metro-health-check*
+
+# Environment variables
+.env
+.env.local
+.env.*.local

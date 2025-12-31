@@ -1,0 +1,9 @@
+{
+  "platforms": ["apple", "android", "web"],
+  "apple": {
+    "modules": ["IntentsModule"]
+  },
+  "android": {
+    "modules": ["expo.modules.intents.IntentsModule"]
+  }
+}
